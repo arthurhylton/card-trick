@@ -3,7 +3,16 @@
 <style type="text/css">
 body
 {
-	font-family:"Trebuchet MS", Helvetica, sans-serif
+	font-family:"Trebuchet MS", Helvetica, sans-serif;
+	background:url('images/free-blue-background.jpg');
+}
+.header-text
+{
+	font-size:1.4em;
+}
+#steps
+{
+	color:#ff0000;
 }
 .column, .choice
 {
@@ -12,6 +21,8 @@ body
 	border:1px solid black;
 	margin-right:20px;
 	text-align:center;
+	padding-top:10px;
+	padding-bottom:10px;
 }
 .column img.overlap:not(:first-child)
 {
@@ -19,18 +30,25 @@ body
 }
 #info
 {
-	width:100%;
+	width:500px;
+	margin:auto;
 }
 .playing_deck
 {
-	width:500px;
-	float:left;
+	width:430px;
+	padding:10px 50px 10px 50px;
+	margin:auto;
+	background:#fff;
+	text-align:center;
+	border:2px solid;
+	-webkit-box-shadow: 10px 10px 5px -4px rgba(0,0,0,0.45);
+-moz-box-shadow: 10px 10px 5px -4px rgba(0,0,0,0.45);
+box-shadow: 10px 10px 5px -4px rgba(0,0,0,0.45);
 }
 #chosen_area
 {
-	margin-top:150px;
+	margin:150px auto 0 auto;
 	width:250px;
-	float:left;
 }
 #chosen_card
 {
@@ -40,6 +58,11 @@ body
 {
 	text-align:center;
 	font-size:2em;
+}
+.btn
+{
+	width:90px;
+	height:35px;
 }
 </style>
 <script type="text/javascript">
@@ -122,9 +145,10 @@ function display_cards()
 	}else
 	{
 		//disable column buttons
-		document.getElementById('column1_btn').style.display = "none";
-		document.getElementById('column2_btn').style.display = "none";
-		document.getElementById('column3_btn').style.display = "none";
+		//document.getElementById('column1_btn').style.display = "none";
+		//document.getElementById('column2_btn').style.display = "none";
+		//document.getElementById('column3_btn').style.display = "none";
+		document.getElementById('playing_deck').style.display = "none";
 		//alert(cards[10]);
 		//show chosen card here
 		var string = "<img src='images/cards/"+cards[10]+".png' class='chosen_card'/>";
@@ -165,26 +189,26 @@ window.onload = function(){
 </head>
 <body>
 <div id="info">
-	<p>
+	<p class="header-text">
 		<span id="instructions">Pick a card and remember it. Then choose the column it is in.</span><br />
-		Step <span id="step"></span> of 3
+		<span id="steps">Step <span id="step"></span> of 3</span>
 	</p>
 </div>
 <div style="clear:both"></div>
-<div class="playing_deck">
+<div class="playing_deck" id="playing_deck">
 	<div id="column_1" class="column"></div>
 	<div id="column_2" class="column"></div>
 	<div id="column_3" class="column"></div>
-	<div style="clear:both"></div>
-	<div class="choice"><input type="button" id="column1_btn" onclick="choose_column('column_1')" value="Col 1" /></div>
-	<div class="choice"><input type="button" id="column2_btn" onclick="choose_column('column_2')" value="Col 2" /></div>
-	<div class="choice"><input type="button" id="column3_btn" onclick="choose_column('column_3')" value="Col 3" /></div>
+	<div style="clear:both;"></div>
+	<div class="choice"><input type="button" id="column1_btn" class="btn" onclick="choose_column('column_1')" value="Col 1" /></div>
+	<div class="choice"><input type="button" id="column2_btn" class="btn" onclick="choose_column('column_2')" value="Col 2" /></div>
+	<div class="choice"><input type="button" id="column3_btn" class="btn" onclick="choose_column('column_3')" value="Col 3" /></div>
 	<div style="clear:both"></div>
 </div>
 <div id="chosen_area">
-<div id="chosen_card"></div>
-<div style="clear:both"></div>
-<div id="chosen_card_info"></div>
+	<div id="chosen_card"></div>
+	<div style="clear:both"></div>
+	<div id="chosen_card_info"></div>
 </div>
 </body>
 </html>
